@@ -192,12 +192,14 @@ void mettreAJourUneFourmi(Fourmi& f, Grille& g, vector<Colonie>& TabCol) {
 			if (regle == 4) { // Si la fourmi est en recherche de base
 				// on charge trois place au hasard
 				Place loinNid = g.chargePlaceAleaNonVide(voiscoord);
+				/*
 				for (int i = 0 ; i < 0 ; i++) {
 					Coord cv = voiscoord.choixHasard();
 					Place Pcv = g.chargePlace(cv);
 					if (not estPlusProcheNid(Pcv, loinNid, col))
 						loinNid = Pcv;
 				}
+				*/
 				// on garde seulement la place la plus loin du nid
 				Place vois = loinNid;
 

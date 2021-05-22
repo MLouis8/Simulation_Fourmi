@@ -4,7 +4,7 @@ using namespace std;
 
 // Les conditions
 
-bool condition_n(int r, Fourmi f, Place p1, Place p2) {
+bool condition_n(int r, Fourmi f, Place& p1, Place& p2) {
     switch(r) {
         case 1: return ConditionPeutChargerSucre(f, p1, p2);
         case 2: return ConditionChercheSucreSuitPiste(f, p1, p2);
@@ -13,31 +13,31 @@ bool condition_n(int r, Fourmi f, Place p1, Place p2) {
 	}
 }
 
-bool ConditionCombat(Fourmi f, Place p1, Place p2) {
+bool ConditionCombat(Fourmi f, Place& p1, Place& p2) {
     return p2.contientFourmi() and (p2.get_colonie_f() != f.get_Colonie()) and p2.fourmi_en_vie();
 }
 
-bool ConditionPeutChargerSucre(Fourmi f, Place p1, Place p2) {
+bool ConditionPeutChargerSucre(Fourmi f, Place& p1, Place& p2) {
     return (not f.porteSucre()) and p2.contientSucre() and not p2.contientNid();
 }
 
-bool ConditionPoseSucreNid(Fourmi f, Place p1, Place p2) {
+bool ConditionPoseSucreNid(Fourmi f, Place& p1, Place& p2) {
     return f.porteSucre() and p2.get_Nid() == f.get_Colonie();
 }
 
-bool ConditionRentreNid(Fourmi f, Place p1, Place p2) {
+bool ConditionRentreNid(Fourmi f, Place& p1, Place& p2) {
     return f.porteSucre() and p2.estVide() and estPlusProcheNid(p2, p1, f.get_Colonie());
 }
 
-bool ConditionChercheSucreSuitPiste(Fourmi f, Place p1, Place p2) {
+bool ConditionChercheSucreSuitPiste(Fourmi f, Place& p1, Place& p2) {
     return not f.porteSucre() and p1.estSurUnePiste() and p2.estVide() and not estPlusProcheNid(p2, p1, f.get_Colonie()) and p2.estSurUnePiste();
 }
 
-bool ConditionChercheSucrePiste(Fourmi f, Place p1, Place p2) {
+bool ConditionChercheSucrePiste(Fourmi f, Place& p1, Place& p2) {
     return not f.porteSucre() and p2.estSurUnePiste() and p2.estVide();
 }
 
-bool ConditionChercheSucre(Fourmi f, Place p1, Place p2) {
+bool ConditionChercheSucre(Fourmi f, Place& p1, Place& p2) {
     return not f.porteSucre() and p2.estVide();
 }
 
